@@ -1,0 +1,79 @@
+{
+  "name": "chx-launcher",
+  "version": "1.0.0",
+  "description": "CHX Launcher - Edição Completa",
+  "main": "main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "author": "CHX Team",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.15.2",
+    "electron-updater": "^6.8.3",
+    "fs-extra": "^11.3.5",
+    "minecraft-launcher-core": "^3.18.2",
+    "msmc": "^5.0.5",
+    "prismarine-nbt": "^2.8.0"
+  },
+  "devDependencies": {
+    "electron": "^41.6.1",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.chx.launcher",
+    "productName": "CHX Launcher",
+    "asar": true,
+    "compression": "maximum",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!dist",
+      "!node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme,test,__tests__,tests,powered-test,example,examples}",
+      "!.git",
+      "!.vscode",
+      "!minecraft",
+      "!.minecraft",
+      "!Data/versions",
+      "!Data/assets",
+      "!Data/libraries",
+      "!config.json",
+      "!Data/config.json"
+    ],
+    "extraFiles": [],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "ui/assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "CHX Launcher",
+      "createDesktopShortcut": true,
+      "installerIcon": "ui/assets/icon.ico",
+      "uninstallerIcon": "ui/assets/icon.ico",
+      "uninstallDisplayName": "Remover CHX Launcher",
+      "deleteAppDataOnUninstall": false
+    }
+  },
+  "publish": [
+    {
+      "provider": "github-releases",
+      "owner": "SEU_USUARIO_OU_ORG",
+      "repo": "SEU_REPO",
+      "private": false
+    }
+  ]
+}
+
